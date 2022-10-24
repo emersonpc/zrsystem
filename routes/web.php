@@ -20,5 +20,6 @@ Route::get('/', function () {
 Route::get('/pessoas', 'App\Http\Controllers\PessoaController@index');
 Route::get('/pessoas/adiciona', 'App\Http\Controllers\PessoaController@create');
 Route::post('/pessoas/adiciona', 'App\Http\Controllers\PessoaController@store');
-Route::get('/pessoas/edita', 'App\Http\Controllers\PessoaController@edit');
-Route::post('/pessoas/edita', 'App\Http\Controllers\PessoaController@update');
+Route::get('/pessoas/edita/{id}', 'App\Http\Controllers\PessoaController@edit');
+Route::post('/pessoas/edita/{id}', 'App\Http\Controllers\PessoaController@update');
+Route::get('/pessoas/deleta/{id}', 'App\Http\Controllers\PessoaController@destroy');

@@ -14,38 +14,46 @@
           <h1 class="h2">Editar pessoa</h1>
         </div>
 
-        <form action="/pessoas/edita" method="POST">
-
+        <form action="/pessoas/edita/{{ $pessoa->id }}" method="POST">
+            @csrf
             <div class="row">
                 <div class="col-md-8">
                     <label class="form-label">Nome</label>
-                    <input type="text" class="form-control" name="nome" required>
+                    <input type="text" class="form-control" name="nome" required value="{{ $pessoa->nome }}">
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">CPF/CNPJ</label>
-                    <input type="text" class="form-control mask_cpfOuCnpj" name="nome" required>
+                    <input type="text" class="form-control mask_cpfOuCnpj" name="cpf_cnpj" value="{{ $pessoa->cpf_cnpj }}">
                 </div>
             </div>
 
             <div class="row mtop10">
                 <div class="col-md-4">
                     <label class="form-label">RG</label>
-                    <input type="text" class="form-control mask_rg" name="nome" required>
+                    <input type="text" class="form-control mask_rg" name="rg" value="{{ $pessoa->rg }}">
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Data de nascimento</label>
-                    <input type="text" class="form-control mask_data" name="nome" required>
+                    <input type="text" class="form-control mask_data" name="data_nascimento" value="{{ $pessoa->data_nascimento }}">
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Estado civil</label>
-
                     <select class="form-control" name="estado_civil">
+                        @php
+                        $selectSolteiro = '';
+                        $selectCasado = '';
+                        if($pessoa->estado_civil == 'casado'){
+                            $selectCasado = 'selected';
+                        }elseif($pessoa->estado_civil == 'solteiro'){
+                            $selectSolteiro = 'selected';
+                        }   
+                        @endphp
                         <option value="">Selecione</option>
-                        <option value="solteiro">Solteiro</option>
-                        <option value="casado">Casado</option>
+                        <option value="solteiro" {{ $selectSolteiro }}>Solteiro</option>
+                        <option value="casado" {{ $selectCasado }}>Casado</option>
                     </select>
                 </div>                
             </div>
@@ -55,12 +63,12 @@
             <div class="row mtop10">
                 <div class="col-md-4">
                     <label class="form-label">CEP</label>
-                    <input type="text" class="form-control buscar-dados-cep" name="cep">
+                    <input type="text" class="form-control buscar-dados-cep" name="cep" value="{{ $pessoa->cep }}">
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Rua</label>
-                    <input type="text" class="form-control campo-endereco" name="rua">
+                    <input type="text" class="form-control campo-endereco" name="rua" value="{{ $pessoa->rua }}">
                 </div>
                 
                 <div class="col-md-4">
@@ -100,12 +108,12 @@
             <div class="row mtop10">
                 <div class="col-md-4">
                     <label class="form-label">Bairro</label>
-                    <input type="text" class="form-control campo-bairro" name="bairro">
+                    <input type="text" class="form-control campo-bairro" name="bairro" value="{{ $pessoa->bairro }}">
                 </div>
                 
                 <div class="col-md-4">
                     <label class="form-label">Complemento</label>
-                    <input type="text" class="form-control campo-complemento" name="complemento">
+                    <input type="text" class="form-control campo-complemento" name="complemento" value="{{ $pessoa->complemento }}">
                 </div>                
             </div>
 
@@ -116,7 +124,7 @@
                     <div class="row mtop10">
                         <div class="col-md-3">
                             <label class="form-label">Tipo</label>
-                            <select class="form-control" name="tipo">
+                            <select class="form-control" name="telefone[0][tipo]">
                                 <option value="">Selecione</option>
                                 <option value="fixo">Fixo</option>
                                 <option value="celular">Celular</option>
@@ -125,7 +133,7 @@
                         
                         <div class="col-md-9">
                             <label class="form-label">Telefone</label>
-                            <input type="text" class="form-control mask_telefone" name="telefone">
+                            <input type="text" class="form-control mask_telefone" name="telefone[0][telefone]">
                         </div>  
                     </div> 
 

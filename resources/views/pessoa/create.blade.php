@@ -24,19 +24,19 @@
 
                 <div class="col-md-4">
                     <label class="form-label">CPF/CNPJ</label>
-                    <input type="text" class="form-control mask_cpfOuCnpj" name="nome" required>
+                    <input type="text" class="form-control mask_cpfOuCnpj" name="cpf_cnpj">
                 </div>
             </div>
 
             <div class="row mtop10">
                 <div class="col-md-4">
                     <label class="form-label">RG</label>
-                    <input type="text" class="form-control mask_rg" name="nome" required>
+                    <input type="text" class="form-control mask_rg" name="rg">
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Data de nascimento</label>
-                    <input type="text" class="form-control mask_data" name="nome" required>
+                    <input type="text" class="form-control mask_data" name="data_nascimento">
                 </div>
 
                 <div class="col-md-4">
@@ -116,7 +116,7 @@
                     <div class="row mtop10">
                         <div class="col-md-3">
                             <label class="form-label">Tipo</label>
-                            <select class="form-control" name="tipo">
+                            <select class="form-control" name="telefone[0][tipo]">
                                 <option value="">Selecione</option>
                                 <option value="fixo">Fixo</option>
                                 <option value="celular">Celular</option>
@@ -125,7 +125,7 @@
                         
                         <div class="col-md-9">
                             <label class="form-label">Telefone</label>
-                            <input type="text" class="form-control mask_telefone" name="telefone">
+                            <input type="text" class="form-control mask_telefone" name="telefone[0][telefone]">
                         </div>  
                     </div> 
 

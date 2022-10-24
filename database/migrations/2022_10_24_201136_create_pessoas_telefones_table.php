@@ -17,9 +17,8 @@ class CreatePessoasTelefonesTable extends Migration
             $table->id();
             $table->string('tipo', 10);
             $table->string('telefone', 15);
-            $table->string('rg', 10);
             $table->integer('pessoa_id')->unsigned();
-            $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');            
+            //$table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');            
             $table->timestamps();
         });
     }

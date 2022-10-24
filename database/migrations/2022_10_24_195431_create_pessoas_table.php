@@ -16,15 +16,15 @@ class CreatePessoasTable extends Migration
         Schema::create('pessoas', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 180);
-            $table->string('cpf_cnpj', 25);
-            $table->string('rg', 10);
-            $table->date('data_nascimento');
-            $table->string('estado_civil', 20);
-            $table->string('cep', 11);
-            $table->string('rua', 150);
-            $table->string('estado', 2);
-            $table->string('bairro', 100);
-            $table->string('complemento', 50);
+            $table->string('cpf_cnpj', 25)->nullable();
+            $table->string('rg', 10)->nullable();
+            $table->date('data_nascimento')->nullable();
+            $table->string('estado_civil', 20)->nullable();
+            $table->string('cep', 11)->nullable();
+            $table->string('rua', 150)->nullable();
+            $table->string('estado', 2)->nullable();
+            $table->string('bairro', 100)->nullable();
+            $table->string('complemento', 50)->nullable();
             $table->timestamps();
         });
     }

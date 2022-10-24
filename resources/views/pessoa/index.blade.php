@@ -15,6 +15,15 @@
           <h1 class="h2">Pessoas</h1>
         </div>
   
+        @if(session('msg'))
+          <div class="col-lg-12">
+              <div class="alert alert-{{session('class')}} alert-dismissible fade show" role="alert">
+                  {{ session('msg') }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          </div>
+        @endif
+
         <div class="row">
 					<div class="col-sm-12 col-md-12">
 						<a href="/pessoas/adiciona" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Adicionar</a>
@@ -35,17 +44,20 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>João Carlos</td>
-                  <td>158.589.658-02</td>
-                  <td>98.949.887</td>
-                  <td>10/10/1987</td>
-                  <td>Solteiro</td>
-                  <td>
-                    <a href="/pessoas/adiciona" class="btn btn-xs btn-primary"><i class="bi bi-pen"></i></a>
-                    <a href="/pessoas/deleta" class="btn btn-xs btn-danger"><i class="bi bi-trash"></i></a>
-                  </td>
-                </tr>
+                @foreach ($pessoas as $pessoa)
+                  <tr>
+                    <td>{{ $pessoa->nome }}</td>
+                    <td>{{ $pessoa->cpf_cnpj }}</td>
+                    <td>{{ $pessoa->rg }}</td>
+                    <td>{{ $pessoa->data_nascimento }}</td>
+                    <td>{{ $pessoa->estado_civil }}</td>
+                    <td>
+                      <a href="/pessoas/edita/{{ $pessoa->id }}" class="btn btn-xs btn-primary"><i class="bi bi-pen"></i></a>
+                      <a href="/pessoas/deleta/{{ $pessoa->id }}" class="btn btn-xs btn-danger"><i class="bi bi-trash"></i></a>
+                    </td>
+                  </tr>
+                @endforeach
+
               </tbody>
             </table>
           </div>
