@@ -15,7 +15,7 @@
         </div>
 
         <form action="/pessoas/adiciona" method="POST">
-
+            @csrf
             <div class="row">
                 <div class="col-md-8">
                     <label class="form-label">Nome</label>

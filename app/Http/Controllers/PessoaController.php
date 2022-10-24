@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Pessoa;
 class PessoaController extends Controller
 {
     /**
@@ -34,7 +34,21 @@ class PessoaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+
+        $pessoa = new Pessoa();
+        $pessoa->nome = $request->nome;
+        $pessoa->cpf_cnpj = $request->cpf_cnpj;
+        $pessoa->rg = $request->rg;
+        $pessoa->data_nascimento = $request->data_nascimento;
+        $pessoa->estado_civil = $request->estado_civil;
+        $pessoa->cep = $request->cep;
+        $pessoa->rua = $request->rua;
+        $pessoa->estado = $request->estado;
+        $pessoa->bairro = $request->bairro;
+        $pessoa->complemento = $request->complemento;
+        $pessoa->save();
+
     }
 
     /**
