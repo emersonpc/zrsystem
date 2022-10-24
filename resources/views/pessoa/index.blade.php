@@ -21,7 +21,7 @@
 					</div>
 				</div>	
 
-        <div class="row">
+        <div class="row mtop30">
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
@@ -36,13 +36,14 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>1,001</td>
-                  <td>random</td>
-                  <td>data</td>
-                  <td>placeholder</td>
-                  <td>text</td>
+                  <td>João Carlos</td>
+                  <td>158.589.658-02</td>
+                  <td>98.949.887</td>
+                  <td>10/10/1987</td>
+                  <td>Solteiro</td>
                   <td>
                     <a href="/pessoas/adiciona" class="btn btn-xs btn-primary"><i class="bi bi-pen"></i></a>
+                    <a href="/pessoas/deleta" class="btn btn-xs btn-danger"><i class="bi bi-trash"></i></a>
                   </td>
                 </tr>
               </tbody>

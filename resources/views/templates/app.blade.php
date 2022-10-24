@@ -43,7 +43,8 @@
         };
         $('.mask_telefone').mask(SPMaskBehavior, spOptions);
     
-        $('.mask_data').mask('00/00/0000');    
+        $('.mask_data').mask('00/00/0000');
+        $('.mask_rg').mask('00.000.000');
     
         //Formata cpf e cnpj no mesmo campo
         var options = {
@@ -54,6 +55,48 @@
         }
         $('.mask_cpfOuCnpj').length > 11 ? $('.mask_cpfOuCnpj').mask('00.000.000/0000-00', options) : $('.mask_cpfOuCnpj').mask('000.000.000-00#', options);
     
+        $('.buscar-dados-cep').on('blur',function(){
+            $.get(
+                'https://viacep.com.br/ws/'+$(this).val()+'/json/',function(retorno){
+                    console.log(retorno);
+                        $('.campo-endereco').val(retorno.logradouro);
+                        $('.campo-bairro').val(retorno.bairro);
+                        if(retorno.localidade != '' && retorno.uf != ''){
+                            $('.campo-estado').val(retorno.uf);
+                        }
+                        $('.campo-complemento').focus();
+                }
+            )
+        });
+
+        $("#btnAdicionaTelefone").click(function(e){
+			e.preventDefault();
+			adicionaCampo();
+		});
+
+        function adicionaCampo(){
+
+            var html = "";
+
+            html += "<div class='row mtop10'>";
+                html += "<div class='col-md-3'>";
+                    html += "<label class='form-label'>Tipo</label>";
+                    html += "<select class='form-control' name='tipo'>";
+                        html += "<option value=''>Selecione</option>";
+                        html += "<option value='fixo'>Fixo</option>";
+                        html += "<option value='celular'>Celular</option>";
+                    html += "</select>";
+                html += "</div>";
+                
+                html += "<div class='col-md-9'>";
+                    html += "<label class='form-label'>Telefone</label>";
+                    html += "<input type='text' class='form-control mask_telefone' name='telefone'>";
+                html += "</div>";
+            html += "</div>";
+
+            $("#imendaHTML").append(html);
+        }
+
     
     });
     </script>
